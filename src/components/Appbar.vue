@@ -6,7 +6,7 @@
           alt="Vuetify Logo"
           class="shrink mr-2"
           contain
-          src="@/assets/logo.png"
+          src="@/assets/img/logo.png"
           transition="scale-transition"
           width="50"
         />
@@ -33,37 +33,50 @@
         </v-btn>
       </div>
     </v-app-bar>
-    <v-navigation-drawer v-model="drawer" app temporary>
-      <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title class="title">Título ou logo</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-
-      <v-divider></v-divider>
-
-      <v-list dense>
-        <v-list-item link @click="$vuetify.goTo('#hero', 0, 500)">
+    <v-navigation-drawer
+      v-model="drawer"
+      app
+      temporary
+      dark
+      src="@/assets/img/bgn.jpg"
+    >
+      <v-list>
+        <v-list-item>
+          <v-list-item-avatar>
+            <img src="@/assets/img/logo.png" alt="Logo" />
+          </v-list-item-avatar>
           <v-list-item-content>
-            <v-list-item-title class="title">Home</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link @click="$vuetify.goTo('#sobre', 0, 500)">
-          <v-list-item-content>
-            <v-list-item-title class="title">Sobre</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link @click="$vuetify.goTo('#servicos', 0, 500)">
-          <v-list-item-content>
-            <v-list-item-title class="title">Serviços</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item link @click="$vuetify.goTo('#contatos', 0, 500)">
-          <v-list-item-content>
-            <v-list-item-title class="title">Contatos</v-list-item-title>
+            <v-list-item-title class="title">Calango</v-list-item-title>
+            <v-list-item-subtitle>WEB</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
       </v-list>
+      <v-divider></v-divider>
+
+      <v-list dense>
+        <v-list-item
+          v-for="([icon, text, link], i) in items"
+          :key="i"
+          link
+          @click="$vuetify.goTo(link)"
+        >
+        <v-list-item-icon class="justify-center">
+          <v-icon>{{icon}}</v-icon>
+        </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title class="subtitile-1">{{text}}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+      <template v-slot:append>
+        <v-row class="text-center">
+          <v-col v-for="(icon, i) in icons" :key="i">
+            <v-btn icon>
+              <v-icon>{{icon}}</v-icon>
+            </v-btn>
+          </v-col>
+        </v-row>
+      </template>
     </v-navigation-drawer>
   </div>
 </template>
@@ -73,6 +86,17 @@ export default {
   data: () => ({
     drawer: null,
     isSm: false,
+    items: [
+      ["fa-home", "Home", "#hero"],
+      ["fa-info", "Sobre", "#sobre"],
+      ["fa-th", "Serviços", "#servicos"],
+      ["fa-envelope-o", "Contatos", "#contatos"],
+    ],
+    icons: [
+      "fa-instagram",
+      "fa-twitter",
+      "fa-facebook",
+    ]
   }),
   props: {
     color: String,

@@ -1,16 +1,21 @@
 <template>
   <section id="hero">
     <v-container class="pa-0" style="display:contents">
-      <v-parallax
-        dark
-        src="@/assets/bg.jpg"
-      >
+      <v-parallax dark src="@/assets/img/hero.jpeg" height="750">
         <v-row align="center" justify="center">
-          <v-col cols="12" sm="3" class="d-none d-md-flex"/>
-          <v-col class="text-left" cols="12" sm="9">
-            <h1 class="display-3 font-weight-regular mb-4">Lorem ipsum dolor!</h1>
-            <h4 class="display-1">Build your application today!</h4>
-            <v-btn color="white" outlined rounded class="mt-6">Vamos lá</v-btn>
+          <v-col class="text-left" cols="12" sm="10">
+            <h1 class="display-3 font-weight-regular mb-4">
+              Lorem ipsum dolor!
+            </h1>
+            <h4 class="display-1">Lorem ipsum dolor!</h4>
+            <v-btn
+              color="white"
+              outlined
+              rounded
+              class="mt-6"
+              @click="$vuetify.goTo('#sobre')"
+              >Vamos lá</v-btn
+            >
           </v-col>
         </v-row>
       </v-parallax>
